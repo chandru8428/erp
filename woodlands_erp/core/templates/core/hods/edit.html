@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Edit HOD</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ hod_form.as_p }}
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a href="{% url 'hod_list' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

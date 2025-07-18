@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Parent List</h2>
+    <a href="{% url 'parent_add' %}" class="btn btn-primary mb-3">+ Add Parent</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for parent in parents %}
+            <tr>
+                <td>{{ parent.user.username }}</td>
+                <td>{{ parent.user.email }}</td>
+                <td>{{ parent.phone }}</td>
+                <td>
+                    <a href="{% url 'parent_edit' parent.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'parent_delete' parent.id %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

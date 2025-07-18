@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}Parent Dashboard{% endblock %}
+{% block content %}
+  <h2>Welcome {{ request.user.username }} (Parent)</h2>
+  <p>👨‍👩‍👧 View your child's attendance, fees, and academic progress.</p>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Librarian List</h2>
+    <a href="{% url 'librarian_add' %}" class="btn btn-primary mb-3">+ Add Librarian</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for librarian in librarians %}
+            <tr>
+                <td>{{ librarian.user.username }}</td>
+                <td>{{ librarian.user.email }}</td>
+                <td>{{ librarian.phone }}</td>
+                <td>
+                    <a href="{% url 'librarian_edit' librarian.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'librarian_delete' librarian.id %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

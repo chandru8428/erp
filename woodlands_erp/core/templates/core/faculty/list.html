@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Faculty List</h2>
+    <a href="{% url 'faculty_add' %}" class="btn btn-success mb-3">+ Add Faculty</a>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Emp ID</th>
+                <th>Department</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for faculty in faculties %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ faculty.user.username }}</td>
+                <td>{{ faculty.user.email }}</td>
+                <td>{{ faculty.emp_id }}</td>
+                <td>{{ faculty.department }}</td>
+                <td>
+                    <a href="{% url 'faculty_edit' faculty.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'faculty_delete' faculty.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6">No faculty found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

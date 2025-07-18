@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2>HOD List</h2>
+  <a href="{% url 'hod_add' %}" class="btn btn-success mb-3">Add HOD</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Emp ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for hod in hods %}
+      <tr>
+        <td>{{ hod.user.username }}</td>
+        <td>{{ hod.user.email }}</td>
+        <td>{{ hod.department }}</td>
+        <td>{{ hod.emp_id }}</td>
+        <td>
+          <a href="{% url 'hod_edit' hod.pk %}" class="btn btn-sm btn-primary">Edit</a>
+          <a href="{% url 'hod_delete' hod.pk %}" class="btn btn-sm btn-danger">Delete</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5">No HODs found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Add Librarian</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ librarian_form.as_p }}
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="{% url 'librarian_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
